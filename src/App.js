@@ -3,15 +3,44 @@ import SignupPage from "./features/SignupPage";
 import FirebaseSetup from "./features/FirebaseSetup";
 import SigninPage from "./features/SigninPage";
 import CorrectWaysToUseFirebase from "./features/CorrectWaysToUseFirebase";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { app } from "./firebase";
+import { useEffect, useState } from "react";
+
+const auth = getAuth(app);
 
 function App() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // Yes your are logged in
+        setUser(user);
+        // console.log(user.email)
+        // console.log(user.uid)
+        // console.log(user.displayName)
+      } else {
+        console.log("You are logged out");
+        setUser(null);
+      }
+    });
+  }, []);
+
+  if (user === null)
+    return (
+      <div className="App">
+        {/* <FirebaseSetup/> */}
+        <SignupPage />
+        {/* <SigninPage/> */}
+        {/* <CorrectWaysToUseFirebase/> */}
+      </div>
+    );
 
   return (
     <div className="App">
-      {/* <FirebaseSetup/> */}
-      {/* <SignupPage/> */}
-      {/* <SigninPage/> */}
-      <CorrectWaysToUseFirebase/>
+      <h2>Hello {user.email}</h2>
+      <button onClick={() => signOut(auth)}>Loggout</button>
     </div>
   );
 }

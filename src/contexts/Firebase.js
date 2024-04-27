@@ -7,14 +7,14 @@ import { userData } from "../utils/constants"; // Assuming this contains some us
 
 // Firebase configuration object containing your app's credentials
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID",
-  databaseURL: "YOUR_DATABASE_URL",
-};
+    apiKey: 'AIzaSyBLh3tC1gaMUSZie1YbH4fn9JxozgcXXAY',
+    authDomain: "app-a4276.firebaseapp.com",
+    projectId: "app-a4276",
+    storageBucket: "app-a4276.appspot.com",
+    messagingSenderId: "290492018416",
+    appId: "1:290492018416:web:a2bbc46f64389efdf19c35",
+    databaseURL: "https://app-a4276-default-rtdb.firebaseio.com",
+  };
 
 // Initialize Firebase app with the provided configuration
 const firebaseApp = initializeApp(firebaseConfig);

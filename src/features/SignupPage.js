@@ -1,8 +1,14 @@
 import React, { useState } from "react";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 import { app } from "../firebase";
 
 const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
 
 function SignupPage() {
   const [email, setEmail] = useState("");
@@ -13,14 +19,23 @@ function SignupPage() {
     createUserWithEmailAndPassword(auth, email, password)
       .then((val) => {
         console.log("Your are signUp now");
-        setEmail('')
-        setPassword('')
+        setEmail("");
+        setPassword("");
       })
       .catch((err) => {
         console.log(err);
       });
   }
 
+  const signUpWithGoogle = () => {
+    signInWithPopup(auth, googleProvider)
+      .then((val) => {
+        console.log(val);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <form className="form" onSubmit={signupUser}>
       <h2>SignupPage via email and password</h2>
@@ -44,7 +59,10 @@ function SignupPage() {
           required
         />
       </div>
+
       <button>Submit</button>
+      <br />
+      <button onClick={signUpWithGoogle}>SignIn with Google</button>
     </form>
   );
 }
