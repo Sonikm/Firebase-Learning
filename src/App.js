@@ -5,11 +5,27 @@ import { getDatabase, set, ref } from "firebase/database";
 function App() {
   const db = getDatabase(app);
 
-  function setData() {
-    set(ref(db, "users/soni"), {
+  const userData = [
+    {
       id: 1,
       name: "Soni Kumari",
       age: 21,
+    },
+    {
+      id: 2,
+      name: "Naina",
+      age: 24,
+    },
+    {
+      id: 3,
+      name: "Ravi Sharma",
+      age: 20,
+    },
+  ];
+
+  function setData() {
+    set(ref(db, "users"), {
+      userData,
     });
   }
 
