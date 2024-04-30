@@ -1,6 +1,6 @@
-import { app } from "../firebase";
+import { app } from "../../firebase";
 import { getDatabase, set, ref } from "firebase/database";
-import { userData } from "../utils/constants";
+import { userData } from "../../utils/constants";
 
 function FirebaseSetup() {
   const db = getDatabase(app);

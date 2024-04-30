@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useFirebase } from "../contexts/Firebase";
+import { useFirebase } from "../../contexts/Firebase";
 
 function CorrectWaysToUseFirebase() {
   // State variables to hold email and password input values
@@ -24,7 +24,9 @@ function CorrectWaysToUseFirebase() {
   }
 
   return (
-    <form onSubmit={signupUser}> {/* Form submission triggers signupUser function */}
+    <form onSubmit={signupUser}>
+      {" "}
+      {/* Form submission triggers signupUser function */}
       <h1>Firebase</h1>
       <div>
         <label>Email: </label>
@@ -48,7 +50,6 @@ function CorrectWaysToUseFirebase() {
           required
         />
       </div>
-
       <button type="submit">Signup</button> {/* Button to submit the form */}
     </form>
   );
