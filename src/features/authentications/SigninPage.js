@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import {signInWithEmailAndPassword, getAuth} from 'firebase/auth';
-import { app } from "../firebase";
-
+import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
+import { app } from "../../firebase";
 
 const auth = getAuth(app);
 
@@ -9,19 +8,21 @@ function SigninPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  function signInUser(e){
-   e.preventDefault();
-   signInWithEmailAndPassword(auth,email, password).then((val) => {
-    console.log("SignIn successfully");
-    setEmail('')
-    setPassword('')
-   }).catch((err) => {
-    console.log(err);
-   })
+  function signInUser(e) {
+    e.preventDefault();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((val) => {
+        console.log("SignIn successfully");
+        setEmail("");
+        setPassword("");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   return (
-    <form className="form" onSubmit={signInUser} >
+    <form className="form" onSubmit={signInUser}>
       <h2>SigninPage via email and password</h2>
       <div>
         <label>Email</label>
